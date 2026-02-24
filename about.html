@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 - 个人技术展示网站</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #165DFF;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(22, 93, 255, 0.1);
+        }
+        
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(22, 93, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- 网站标题 -->
+                <a href="index.html" class="text-2xl font-bold text-blue-600">
+                    <span class="fa fa-code mr-2"></span>技术展示
+                </a>
+                
+                <!-- 桌面端导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">首页</a>
+                    <a href="skills.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">技术栈</a>
+                    <a href="awards.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">奖项</a>
+                    <a href="projects.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">项目经验</a>
+                    <a href="about.html" class="nav-link font-medium text-blue-600">关于我</a>
+                </nav>
+                
+                <!-- 联系按钮 -->
+                <a href="index.html#contact" class="hidden md:block btn-primary bg-blue-600 text-white px-4 py-2 rounded-lg font-medium">
+                    <span class="fa fa-envelope mr-2"></span>联系我
+                </a>
+                
+                <!-- 移动端汉堡菜单 -->
+                <button class="md:hidden text-gray-600 focus:outline-none" id="menu-toggle">
+                    <span class="fa fa-bars text-2xl"></span>
+                </button>
+            </div>
+            
+            <!-- 移动端导航菜单 -->
+            <div class="md:hidden hidden mt-4 pb-3" id="mobile-menu">
+                <nav class="flex flex-col space-y-3">
+                    <a href="index.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">首页</a>
+                    <a href="skills.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">技术栈</a>
+                    <a href="awards.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">奖项</a>
+                    <a href="projects.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">项目经验</a>
+                    <a href="about.html" class="font-medium text-blue-600 px-2 py-1">关于我</a>
+                    <a href="index.html#contact" class="font-medium text-white bg-blue-600 px-4 py-2 rounded-lg text-center">
+                        <span class="fa fa-envelope mr-2"></span>联系我
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 页面标题 -->
+    <section class="pt-32 pb-16 bg-gradient-to-b from-blue-600 to-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">关于我</h1>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                    了解我的个人背景、职业目标、教育经历和兴趣爱好
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 个人背景 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">个人背景</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    我的个人简介和职业背景，反映我的专业能力和职业发展历程
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- 个人照片 -->
+                <div class="md:w-1/3" data-aos="fade-right">
+                    <div class="relative w-64 h-80 mx-auto md:mx-0 rounded-xl overflow-hidden border-4 border-white shadow-xl">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20developer%20portrait%20full%20body%20male%20asian%20in%20business%20attire%20confident%20pose%20clean%20background&image_size=portrait_4_3" alt="个人照片" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- 个人简介 -->
+                <div class="md:w-2/3" data-aos="fade-left">
+                    <p class="text-lg text-gray-700 mb-6">
+                        我是张三，一名拥有5年经验的全栈开发工程师，专注于Web应用开发和系统架构设计。我毕业于清华大学计算机科学与技术专业，获得了优秀毕业生称号。
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6">
+                        在职业生涯中，我曾在腾讯、阿里巴巴、字节跳动等知名科技公司工作，参与和主导了多个大型项目的开发。我擅长前端和后端技术栈，能够独立完成从需求分析到产品上线的全流程开发。
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6">
+                        我热衷于技术创新和问题解决，不断学习新技术和方法论，以提高自己的专业能力。我相信技术的力量可以改变世界，希望通过自己的努力，为社会创造更多价值。
+                    </p>
+                    
+                    <!-- 个人标签 -->
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                            全栈开发
+                        </span>
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                            系统架构
+                        </span>
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                            技术创新
+                        </span>
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                            项目管理
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 职业目标 -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">职业目标</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    我的短期和长期职业目标，反映我的职业规划和发展方向
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 短期目标 -->
+                <div class="card bg-white p-8 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-blue-600 text-4xl mb-6">
+                        <span class="fa fa-bullseye"></span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">短期目标</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="fa fa-check-circle text-green-500 mr-3 mt-1"></span>
+                            <span class="text-gray-700">
+                                成为技术团队的核心成员，负责关键项目的架构设计和技术选型
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="fa fa-check-circle text-green-500 mr-3 mt-1"></span>
+                            <span class="text-gray-700">
+                                深入学习云原生技术和DevOps实践，提升系统运维和部署能力
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="fa fa-check-circle text-green-500 mr-3 mt-1"></span>
+                            <span class="text-gray-700">
+                                参与开源项目，贡献自己的代码和技术见解
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="fa fa-check-circle text-green-500 mr-3 mt-1"></span>
+                            <span class="text-gray-700">
+                                获得更多行业认证，如Google Cloud Professional Developer
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 长期目标 -->
+                <div class="card bg-white p-8 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-blue-600 text-4xl mb-6">
+                        <span class="fa fa-rocket"></span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">长期目标</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="fa fa-check-circle text-green-500 mr-3 mt-1"></span>
+                            <span class="text-gray-700">
+                                成长为技术总监或架构师，带领团队进行大型项目的设计和开发
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="fa fa-check-circle text-green-500 mr-3 mt-1"></span>
+                            <span class="text-gray-700">
+                                创办自己的技术公司，开发具有创新性的产品和服务
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="fa fa-check-circle text-green-500 mr-3 mt-1"></span>
+                            <span class="text-gray-700">
+                                成为技术社区的影响力人物，通过博客、演讲等方式分享技术知识
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="fa fa-check-circle text-green-500 mr-3 mt-1"></span>
+                            <span class="text-gray-700">
+                                推动技术创新，为行业发展做出贡献
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育经历 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">教育经历</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    我的教育背景和学习经历，反映我的学术能力和专业知识基础
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- 教育项目1 -->
+                <div class="card bg-white p-8 rounded-xl shadow-md mb-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold">清华大学</h3>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                            2018年 - 2022年
+                        </span>
+                    </div>
+                    <p class="text-gray-600 mb-4">计算机科学与技术专业 | 学士学位</p>
+                    <p class="text-gray-700 mb-6">
+                        主修课程：数据结构、算法设计、操作系统、计算机网络、数据库原理、软件工程、人工智能等。
+                        获得优秀毕业生称号，GPA 3.8/4.0，位列专业前5%。
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">
+                            优秀毕业生
+                        </span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">
+                            GPA 3.8/4.0
+                        </span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">
+                            专业前5%
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 教育项目2 -->
+                <div class="card bg-white p-8 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-bold">北京大学</h3>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                            2022年 - 2025年
+                        </span>
+                    </div>
+                    <p class="text-gray-600 mb-4">计算机科学与技术专业 | 硕士学位</p>
+                    <p class="text-gray-700 mb-6">
+                        主修课程：高级算法设计、分布式系统、云计算、大数据分析、机器学习等。
+                        获得优秀研究生奖学金，参与多个科研项目，发表2篇学术论文。
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">
+                            优秀研究生奖学金
+                        </span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">
+                            2篇学术论文
+                        </span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">
+                            科研项目参与
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 兴趣爱好 -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">兴趣爱好</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    我的个人兴趣爱好，反映我的多元化特质和生活态度
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 兴趣1 -->
+                <div class="card bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <span class="fa fa-code"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">编程</h3>
+                    <p class="text-gray-700">
+                        热爱编程，喜欢解决复杂的技术问题，探索新技术和框架
+                    </p>
+                </div>
+                
+                <!-- 兴趣2 -->
+                <div class="card bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <span class="fa fa-book"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">阅读</h3>
+                    <p class="text-gray-700">
+                        喜欢阅读技术书籍和行业文章，不断学习新知识
+                    </p>
+                </div>
+                
+                <!-- 兴趣3 -->
+                <div class="card bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <span class="fa fa-running"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">运动</h3>
+                    <p class="text-gray-700">
+                        喜欢跑步、游泳和健身，保持身体健康和良好的精神状态
+                    </p>
+                </div>
+                
+                <!-- 兴趣4 -->
+                <div class="card bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <span class="fa fa-globe"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">旅行</h3>
+                    <p class="text-gray-700">
+                        喜欢旅行，了解不同的文化和风景，开阔视野
+                    </p>
+                </div>
+                
+                <!-- 兴趣5 -->
+                <div class="card bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="500">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <span class="fa fa-music"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">音乐</h3>
+                    <p class="text-gray-700">
+                        喜欢听音乐，放松心情，提高工作效率
+                    </p>
+                </div>
+                
+                <!-- 兴趣6 -->
+                <div class="card bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <span class="fa fa-coffee"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">咖啡</h3>
+                    <p class="text-gray-700">
+                        喜欢品尝不同种类的咖啡，了解咖啡文化
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="py-20 bg-blue-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">联系我</h2>
+                <p class="text-blue-100 max-w-2xl mx-auto">
+                    如果您对我的技术能力感兴趣，或者有任何合作机会，欢迎随时与我联系
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 邮箱 -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl mb-4">
+                        <span class="fa fa-envelope"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">邮箱</h3>
+                    <p class="text-blue-100">zhangsan@example.com</p>
+                </div>
+                
+                <!-- GitHub -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl mb-4">
+                        <span class="fa fa-github"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">GitHub</h3>
+                    <a href="https://github.com" class="text-blue-100 hover:text-white transition">github.com/zhangsan</a>
+                </div>
+                
+                <!-- LinkedIn -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl mb-4">
+                        <span class="fa fa-linkedin"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">LinkedIn</h3>
+                    <a href="https://linkedin.com" class="text-blue-100 hover:text-white transition">linkedin.com/in/zhangsan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-gray-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-400">© 2026 个人技术展示网站. 保留所有权利.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com" class="text-gray-400 hover:text-white transition">
+                        <span class="fa fa-github text-xl"></span>
+                    </a>
+                    <a href="https://linkedin.com" class="text-gray-400 hover:text-white transition">
+                        <span class="fa fa-linkedin text-xl"></span>
+                    </a>
+                    <a href="https://twitter.com" class="text-gray-400 hover:text-white transition">
+                        <span class="fa fa-twitter text-xl"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 初始化AOS动画库
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+            
+            // 移动端菜单切换
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // 关闭移动端菜单
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- 自定义动画脚本 -->
+    <script src="js/animations.js"></script>
+</body>
+</html>

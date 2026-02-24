@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目经验 - 个人技术展示网站</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #165DFF;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(22, 93, 255, 0.1);
+        }
+        
+        .tech-tag {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(22, 93, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- 网站标题 -->
+                <a href="index.html" class="text-2xl font-bold text-blue-600">
+                    <span class="fa fa-code mr-2"></span>技术展示
+                </a>
+                
+                <!-- 桌面端导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">首页</a>
+                    <a href="skills.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">技术栈</a>
+                    <a href="awards.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">奖项</a>
+                    <a href="projects.html" class="nav-link font-medium text-blue-600">项目经验</a>
+                    <a href="about.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">关于我</a>
+                </nav>
+                
+                <!-- 联系按钮 -->
+                <a href="index.html#contact" class="hidden md:block btn-primary bg-blue-600 text-white px-4 py-2 rounded-lg font-medium">
+                    <span class="fa fa-envelope mr-2"></span>联系我
+                </a>
+                
+                <!-- 移动端汉堡菜单 -->
+                <button class="md:hidden text-gray-600 focus:outline-none" id="menu-toggle">
+                    <span class="fa fa-bars text-2xl"></span>
+                </button>
+            </div>
+            
+            <!-- 移动端导航菜单 -->
+            <div class="md:hidden hidden mt-4 pb-3" id="mobile-menu">
+                <nav class="flex flex-col space-y-3">
+                    <a href="index.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">首页</a>
+                    <a href="skills.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">技术栈</a>
+                    <a href="awards.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">奖项</a>
+                    <a href="projects.html" class="font-medium text-blue-600 px-2 py-1">项目经验</a>
+                    <a href="about.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">关于我</a>
+                    <a href="index.html#contact" class="font-medium text-white bg-blue-600 px-4 py-2 rounded-lg text-center">
+                        <span class="fa fa-envelope mr-2"></span>联系我
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 页面标题 -->
+    <section class="pt-32 pb-16 bg-gradient-to-b from-blue-600 to-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">项目经验</h1>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                    展示我参与和主导的项目，包括技术栈应用、解决的问题和取得的成果
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目列表 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">项目列表</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    按时间倒序排列的项目经验，展示我的技术能力和项目管理能力
+                </p>
+            </div>
+            
+            <div class="space-y-16">
+                <!-- 项目1 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- 项目图片 -->
+                        <div class="md:w-2/5">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20enterprise%20application%20dashboard%20UI%20design%20professional%20clean%20interface&image_size=landscape_4_3" alt="企业级应用系统" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- 项目详情 -->
+                        <div class="md:w-3/5 p-8">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-bold">企业级应用系统</h3>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                                    2025年
+                                </span>
+                            </div>
+                            <p class="text-gray-600 mb-4">腾讯科技有限公司</p>
+                            <p class="text-gray-700 mb-6">
+                                主导开发的企业级应用系统，为公司内部提供一站式的业务管理解决方案。该系统集成了多个业务模块，包括项目管理、人力资源、财务管理等，显著提升了公司的业务效率。
+                            </p>
+                            
+                            <!-- 技术栈 -->
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-3">技术栈</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        React
+                                    </span>
+                                    <span class="tech-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Node.js
+                                    </span>
+                                    <span class="tech-tag bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Express
+                                    </span>
+                                    <span class="tech-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        MySQL
+                                    </span>
+                                    <span class="tech-tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Redis
+                                    </span>
+                                    <span class="tech-tag bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Docker
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- 成果 -->
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-3">项目成果</h4>
+                                <ul class="space-y-2">
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        系统上线后，业务处理效率提升了60%
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        系统稳定性达到99.99%，显著减少了系统故障时间
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        获得公司年度最佳项目奖
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- 项目链接 -->
+                            <div class="flex gap-4">
+                                <a href="#" class="btn-primary bg-blue-600 text-white px-4 py-2 rounded-lg font-medium flex items-center">
+                                    <span class="fa fa-external-link mr-2"></span>查看项目
+                                </a>
+                                <a href="#" class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50 transition">
+                                    <span class="fa fa-github mr-2"></span>GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目2 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- 项目图片 -->
+                        <div class="md:w-2/5">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=microservices%20architecture%20diagram%20modern%20cloud%20computing%20system%20design&image_size=landscape_4_3" alt="微服务架构系统" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- 项目详情 -->
+                        <div class="md:w-3/5 p-8">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-bold">微服务架构系统</h3>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                                    2025年
+                                </span>
+                            </div>
+                            <p class="text-gray-600 mb-4">阿里巴巴集团</p>
+                            <p class="text-gray-700 mb-6">
+                                主导设计和实现的微服务架构系统，将传统单体应用拆分为多个独立的微服务，显著提升了系统的可扩展性和可维护性。该系统采用了现代的微服务技术栈，包括容器化部署、服务发现、负载均衡等。
+                            </p>
+                            
+                            <!-- 技术栈 -->
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-3">技术栈</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Spring Boot
+                                    </span>
+                                    <span class="tech-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Spring Cloud
+                                    </span>
+                                    <span class="tech-tag bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Docker
+                                    </span>
+                                    <span class="tech-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Kubernetes
+                                    </span>
+                                    <span class="tech-tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        PostgreSQL
+                                    </span>
+                                    <span class="tech-tag bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Redis
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- 成果 -->
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-3">项目成果</h4>
+                                <ul class="space-y-2">
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        系统响应时间减少了60%
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        开发效率提升了40%，部署时间从小时级缩短到分钟级
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        获得公司技术创新奖
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- 项目链接 -->
+                            <div class="flex gap-4">
+                                <a href="#" class="btn-primary bg-blue-600 text-white px-4 py-2 rounded-lg font-medium flex items-center">
+                                    <span class="fa fa-external-link mr-2"></span>查看项目
+                                </a>
+                                <a href="#" class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50 transition">
+                                    <span class="fa fa-github mr-2"></span>GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目3 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- 项目图片 -->
+                        <div class="md:w-2/5">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=e-commerce%20website%20modern%20design%20product%20listing%20page%20professional%20UI&image_size=landscape_4_3" alt="电商平台" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- 项目详情 -->
+                        <div class="md:w-3/5 p-8">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-bold">电商平台</h3>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                                    2024年
+                                </span>
+                            </div>
+                            <p class="text-gray-600 mb-4">字节跳动</p>
+                            <p class="text-gray-700 mb-6">
+                                参与开发的电商平台，为用户提供商品浏览、购物车、下单支付等功能。该平台采用了前后端分离的架构，前端使用React，后端使用Node.js，数据库使用MongoDB。
+                            </p>
+                            
+                            <!-- 技术栈 -->
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-3">技术栈</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        React
+                                    </span>
+                                    <span class="tech-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Node.js
+                                    </span>
+                                    <span class="tech-tag bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Express
+                                    </span>
+                                    <span class="tech-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        MongoDB
+                                    </span>
+                                    <span class="tech-tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Redis
+                                    </span>
+                                    <span class="tech-tag bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Stripe
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- 成果 -->
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-3">项目成果</h4>
+                                <ul class="space-y-2">
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        平台上线后，用户转化率提升了30%
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        页面加载速度提升了50%
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        获得团队优秀项目奖
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- 项目链接 -->
+                            <div class="flex gap-4">
+                                <a href="#" class="btn-primary bg-blue-600 text-white px-4 py-2 rounded-lg font-medium flex items-center">
+                                    <span class="fa fa-external-link mr-2"></span>查看项目
+                                </a>
+                                <a href="#" class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50 transition">
+                                    <span class="fa fa-github mr-2"></span>GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目4 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- 项目图片 -->
+                        <div class="md:w-2/5">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=food%20delivery%20app%20interface%20mobile%20application%20modern%20design&image_size=landscape_4_3" alt="外卖配送系统" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- 项目详情 -->
+                        <div class="md:w-3/5 p-8">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-bold">外卖配送系统</h3>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                                    2023年
+                                </span>
+                            </div>
+                            <p class="text-gray-600 mb-4">美团点评</p>
+                            <p class="text-gray-700 mb-6">
+                                参与开发的外卖配送系统，为用户提供在线点餐、配送跟踪等功能。该系统采用了Python Django作为后端框架，前端使用Vue.js，数据库使用MySQL。
+                            </p>
+                            
+                            <!-- 技术栈 -->
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-3">技术栈</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Vue.js
+                                    </span>
+                                    <span class="tech-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Python
+                                    </span>
+                                    <span class="tech-tag bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Django
+                                    </span>
+                                    <span class="tech-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        MySQL
+                                    </span>
+                                    <span class="tech-tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        Redis
+                                    </span>
+                                    <span class="tech-tag bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        WebSocket
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- 成果 -->
+                            <div class="mb-6">
+                                <h4 class="font-bold mb-3">项目成果</h4>
+                                <ul class="space-y-2">
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        配送效率提升了25%，平均配送时间减少了10分钟
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        系统稳定性达到99.95%
+                                    </li>
+                                    <li class="flex items-center">
+                                        <span class="fa fa-check-circle text-green-500 mr-2"></span>
+                                        获得代码质量奖
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- 项目链接 -->
+                            <div class="flex gap-4">
+                                <a href="#" class="btn-primary bg-blue-600 text-white px-4 py-2 rounded-lg font-medium flex items-center">
+                                    <span class="fa fa-external-link mr-2"></span>查看项目
+                                </a>
+                                <a href="#" class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-lg font-medium flex items-center hover:bg-gray-50 transition">
+                                    <span class="fa fa-github mr-2"></span>GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目统计 -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">项目统计</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    我的项目经验概览，反映个人在技术领域的实践能力
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- 统计1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-5xl font-bold mb-4 text-blue-600">10+</div>
+                    <p class="text-gray-700">参与的项目总数</p>
+                </div>
+                
+                <!-- 统计2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-5xl font-bold mb-4 text-blue-600">5</div>
+                    <p class="text-gray-700">主导的项目数</p>
+                </div>
+                
+                <!-- 统计3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-5xl font-bold mb-4 text-blue-600">5年</div>
+                    <p class="text-gray-700">项目开发经验</p>
+                </div>
+                
+                <!-- 统计4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-5xl font-bold mb-4 text-blue-600">20+</div>
+                    <p class="text-gray-700">使用的技术栈数量</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-gray-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-400">© 2026 个人技术展示网站. 保留所有权利.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com" class="text-gray-400 hover:text-white transition">
+                        <span class="fa fa-github text-xl"></span>
+                    </a>
+                    <a href="https://linkedin.com" class="text-gray-400 hover:text-white transition">
+                        <span class="fa fa-linkedin text-xl"></span>
+                    </a>
+                    <a href="https://twitter.com" class="text-gray-400 hover:text-white transition">
+                        <span class="fa fa-twitter text-xl"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 初始化AOS动画库
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+            
+            // 移动端菜单切换
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // 关闭移动端菜单
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- 自定义动画脚本 -->
+    <script src="js/animations.js"></script>
+</body>
+</html>

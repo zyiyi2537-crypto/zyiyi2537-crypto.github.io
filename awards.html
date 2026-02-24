@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奖项 - 个人技术展示网站</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #165DFF;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .award-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .award-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(22, 93, 255, 0.1);
+        }
+        
+        .timeline-item {
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 24px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #165DFF;
+            z-index: 1;
+        }
+        
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(22, 93, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- 网站标题 -->
+                <a href="index.html" class="text-2xl font-bold text-blue-600">
+                    <span class="fa fa-code mr-2"></span>技术展示
+                </a>
+                
+                <!-- 桌面端导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">首页</a>
+                    <a href="skills.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">技术栈</a>
+                    <a href="awards.html" class="nav-link font-medium text-blue-600">奖项</a>
+                    <a href="projects.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">项目经验</a>
+                    <a href="about.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">关于我</a>
+                </nav>
+                
+                <!-- 联系按钮 -->
+                <a href="index.html#contact" class="hidden md:block btn-primary bg-blue-600 text-white px-4 py-2 rounded-lg font-medium">
+                    <span class="fa fa-envelope mr-2"></span>联系我
+                </a>
+                
+                <!-- 移动端汉堡菜单 -->
+                <button class="md:hidden text-gray-600 focus:outline-none" id="menu-toggle">
+                    <span class="fa fa-bars text-2xl"></span>
+                </button>
+            </div>
+            
+            <!-- 移动端导航菜单 -->
+            <div class="md:hidden hidden mt-4 pb-3" id="mobile-menu">
+                <nav class="flex flex-col space-y-3">
+                    <a href="index.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">首页</a>
+                    <a href="skills.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">技术栈</a>
+                    <a href="awards.html" class="font-medium text-blue-600 px-2 py-1">奖项</a>
+                    <a href="projects.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">项目经验</a>
+                    <a href="about.html" class="font-medium text-gray-600 hover:text-blue-600 px-2 py-1">关于我</a>
+                    <a href="index.html#contact" class="font-medium text-white bg-blue-600 px-4 py-2 rounded-lg text-center">
+                        <span class="fa fa-envelope mr-2"></span>联系我
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 页面标题 -->
+    <section class="pt-32 pb-16 bg-gradient-to-b from-blue-600 to-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">奖项与荣誉</h1>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                    展示我在技术领域获得的奖项和荣誉，反映个人专业能力和成就
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 奖项概览 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">奖项概览</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    获得的部分重要奖项和荣誉，按时间倒序排列
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 奖项1 -->
+                <div class="award-card bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <span class="fa fa-trophy"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">最佳全栈开发者奖</h3>
+                    <p class="text-gray-600 mb-4">腾讯科技有限公司</p>
+                    <p class="text-gray-500 text-sm mb-4">2025年12月</p>
+                    <p class="text-gray-700">
+                        凭借出色的全栈开发能力和项目交付质量，获得公司年度最佳全栈开发者奖项。
+                    </p>
+                </div>
+                
+                <!-- 奖项2 -->
+                <div class="award-card bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <span class="fa fa-medal"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">技术创新奖</h3>
+                    <p class="text-gray-600 mb-4">阿里巴巴集团</p>
+                    <p class="text-gray-500 text-sm mb-4">2025年6月</p>
+                    <p class="text-gray-700">
+                        主导开发的微服务架构方案，显著提升了系统性能和可维护性，获得技术创新奖项。
+                    </p>
+                </div>
+                
+                <!-- 奖项3 -->
+                <div class="award-card bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <span class="fa fa-certificate"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AWS认证解决方案架构师</h3>
+                    <p class="text-gray-600 mb-4">亚马逊云计算服务</p>
+                    <p class="text-gray-500 text-sm mb-4">2024年11月</p>
+                    <p class="text-gray-700">
+                        获得AWS认证解决方案架构师专业级认证，证明在云架构设计方面的专业能力。
+                    </p>
+                </div>
+                
+                <!-- 奖项4 -->
+                <div class="award-card bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <span class="fa fa-star"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">优秀工程师奖</h3>
+                    <p class="text-gray-600 mb-4">字节跳动</p>
+                    <p class="text-gray-500 text-sm mb-4">2024年5月</p>
+                    <p class="text-gray-700">
+                        因在大型项目中的杰出表现和技术贡献，获得公司优秀工程师奖项。
+                    </p>
+                </div>
+                
+                <!-- 奖项5 -->
+                <div class="award-card bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="500">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <span class="fa fa-code"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">代码质量奖</h3>
+                    <p class="text-gray-600 mb-4">美团点评</p>
+                    <p class="text-gray-500 text-sm mb-4">2023年12月</p>
+                    <p class="text-gray-700">
+                        因编写高质量、可维护的代码，获得团队代码质量奖项。
+                    </p>
+                </div>
+                
+                <!-- 奖项6 -->
+                <div class="award-card bg-white p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <span class="fa fa-graduation-cap"></span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">优秀毕业生</h3>
+                    <p class="text-gray-600 mb-4">清华大学</p>
+                    <p class="text-gray-500 text-sm mb-4">2022年6月</p>
+                    <p class="text-gray-700">
+                        因学业成绩优异和技术实践表现突出，获得优秀毕业生称号。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 获奖时间线 -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">获奖时间线</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    按时间顺序展示我的获奖历程，反映个人专业成长轨迹
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- 时间线项目1 -->
+                <div class="timeline-item pl-8 pb-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">最佳全栈开发者奖</h3>
+                            <span class="text-gray-500 text-sm">2025年12月</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">腾讯科技有限公司</p>
+                        <p class="text-gray-700">
+                            凭借出色的全栈开发能力和项目交付质量，获得公司年度最佳全栈开发者奖项。
+                            主导开发的企业级应用系统，显著提升了业务效率，得到了公司和客户的高度认可。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 时间线项目2 -->
+                <div class="timeline-item pl-8 pb-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">技术创新奖</h3>
+                            <span class="text-gray-500 text-sm">2025年6月</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">阿里巴巴集团</p>
+                        <p class="text-gray-700">
+                            主导开发的微服务架构方案，显著提升了系统性能和可维护性，获得技术创新奖项。
+                            该方案解决了传统单体应用的性能瓶颈问题，使系统响应时间减少了60%。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 时间线项目3 -->
+                <div class="timeline-item pl-8 pb-12" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">AWS认证解决方案架构师</h3>
+                            <span class="text-gray-500 text-sm">2024年11月</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">亚马逊云计算服务</p>
+                        <p class="text-gray-700">
+                            获得AWS认证解决方案架构师专业级认证，证明在云架构设计方面的专业能力。
+                            掌握了AWS云服务的设计、部署和管理，能够为企业提供最佳的云解决方案。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 时间线项目4 -->
+                <div class="timeline-item pl-8 pb-12" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">优秀工程师奖</h3>
+                            <span class="text-gray-500 text-sm">2024年5月</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">字节跳动</p>
+                        <p class="text-gray-700">
+                            因在大型项目中的杰出表现和技术贡献，获得公司优秀工程师奖项。
+                            在项目中担任核心开发角色，解决了多个技术难题，确保了项目的顺利交付。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 时间线项目5 -->
+                <div class="timeline-item pl-8 pb-12" data-aos="fade-up" data-aos-delay="500">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">代码质量奖</h3>
+                            <span class="text-gray-500 text-sm">2023年12月</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">美团点评</p>
+                        <p class="text-gray-700">
+                            因编写高质量、可维护的代码，获得团队代码质量奖项。
+                            代码评审通过率100%，编写的代码被团队作为最佳实践参考。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 时间线项目6 -->
+                <div class="timeline-item pl-8" data-aos="fade-up" data-aos-delay="600">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">优秀毕业生</h3>
+                            <span class="text-gray-500 text-sm">2022年6月</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">清华大学</p>
+                        <p class="text-gray-700">
+                            因学业成绩优异和技术实践表现突出，获得优秀毕业生称号。
+                            在校期间参与多个技术项目，发表了2篇技术论文，获得了导师和同学的高度评价。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 奖项统计 -->
+    <section class="py-20 bg-blue-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">奖项统计</h2>
+                <p class="text-blue-100 max-w-2xl mx-auto">
+                    我的获奖情况概览，反映个人在技术领域的专业成就
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 统计1 -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-5xl font-bold mb-4">6+</div>
+                    <p class="text-blue-100">获得的奖项总数</p>
+                </div>
+                
+                <!-- 统计2 -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-5xl font-bold mb-4">3</div>
+                    <p class="text-blue-100">行业认证</p>
+                </div>
+                
+                <!-- 统计3 -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-5xl font-bold mb-4">5年</div>
+                    <p class="text-blue-100">专业技术经验</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-gray-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-400">© 2026 个人技术展示网站. 保留所有权利.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com" class="text-gray-400 hover:text-white transition">
+                        <span class="fa fa-github text-xl"></span>
+                    </a>
+                    <a href="https://linkedin.com" class="text-gray-400 hover:text-white transition">
+                        <span class="fa fa-linkedin text-xl"></span>
+                    </a>
+                    <a href="https://twitter.com" class="text-gray-400 hover:text-white transition">
+                        <span class="fa fa-twitter text-xl"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 初始化AOS动画库
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+            
+            // 移动端菜单切换
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // 关闭移动端菜单
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- 自定义动画脚本 -->
+    <script src="js/animations.js"></script>
+</body>
+</html>
