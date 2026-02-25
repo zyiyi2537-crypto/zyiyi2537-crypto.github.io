@@ -3,16 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>应宇 - 个人技术展示</title>
-    <!-- Tailwind CSS -->
+    <title>应宇 - 全栈开发者</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- AOS Animation Library -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -24,13 +19,12 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #333333;
+            background-color: #0a0e0f;
+            color: #e0e0e0;
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
         
-        /* 动态背景 */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -38,53 +32,24 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            opacity: 0.03;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 163, 255, 0.05) 0%, transparent 70%);
         }
         
-        .animated-bg::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
-            animation: moveGradient 20s ease-in-out infinite;
-        }
-        
-        @keyframes moveGradient {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            25% {
-                transform: translate(50px, 50px) rotate(90deg);
-            }
-            50% {
-                transform: translate(0, 100px) rotate(180deg);
-            }
-            75% {
-                transform: translate(-50px, 50px) rotate(270deg);
-            }
-        }
-        
-        /* 滚动进度条 */
         .scroll-progress {
             position: fixed;
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, #00d4ff, #00a3ff);
             z-index: 9999;
             transition: width 0.1s ease;
-            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 212, 255, 0.5);
         }
         
-        /* 导航栏 */
         .nav-link {
             position: relative;
             transition: all 0.3s ease;
-            color: #333333;
+            color: #e0e0e0;
             padding: 8px 0;
         }
         
@@ -95,12 +60,12 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, #00d4ff, #00a3ff);
             transition: width 0.3s ease;
         }
         
         .nav-link:hover {
-            color: #667eea;
+            color: #00d4ff;
         }
         
         .nav-link:hover::after {
@@ -115,155 +80,70 @@
             transition: opacity 0.5s ease;
         }
         
-        .bg-gray-50 {
-            background-color: #f9f9f9;
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
-        /* 奖项标签 */
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+        
         .award-tag {
             display: inline-block;
-            padding: 3px 10px;
-            margin-right: 6px;
-            margin-bottom: 6px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4px 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #00d4ff, #00a3ff);
             border-radius: 20px;
             font-size: 12px;
             color: white;
             transition: all 0.3s ease;
-            cursor: default;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
         }
         
         .award-tag:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
         }
         
-        /* 项目卡片 */
-        .project-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-            background: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.05), transparent);
-            transition: left 0.6s ease;
-        }
-        
-        .project-card:hover::before {
-            left: 100%;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-        
-        /* 技能徽章 */
         .skill-badge {
             display: inline-block;
-            padding: 6px 14px;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 6px 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            background: rgba(0, 212, 255, 0.15);
             border-radius: 20px;
             font-size: 14px;
-            color: #333;
+            color: #e0e0e0;
             transition: all 0.3s ease;
-            cursor: default;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
         }
         
         .skill-badge:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #00d4ff, #00a3ff);
             color: white;
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.3);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 212, 255, 0.3);
+            border-color: #00d4ff;
         }
         
-        /* 服务卡片 */
-        .service-card {
-            transition: all 0.3s ease;
-            border: 1px solid rgba(102, 126, 234, 0.1);
-            background: white;
-            position: relative;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: inherit;
-        }
-        
-        .service-card:hover::before {
-            opacity: 1;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.12);
-            border-color: rgba(102, 126, 234, 0.2);
-        }
-        
-        .service-card > * {
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* 奖项卡片 */
-        .award-card {
-            transition: all 0.3s ease;
-            background: white;
-            position: relative;
-            border-left: 4px solid transparent;
-        }
-        
-        .award-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.1);
-            border-left-color: #667eea;
-        }
-        
-        h1, h2, h3, h4 {
-            color: #000000;
-            transition: color 0.3s ease;
-        }
-        
-        h2:hover {
-            color: #667eea;
-        }
-        
-        /* 文字渐变效果 */
         .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #00d4ff, #00a3ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        /* 页面加载动画 */
         .fade-in {
-            animation: fadeIn 0.8s ease-in-out;
+            animation: fadeInUp 1s ease-out;
         }
         
-        @keyframes fadeIn {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -274,19 +154,17 @@
             }
         }
         
-        /* 鼠标跟随效果 */
         .cursor-follower {
             position: fixed;
             width: 20px;
             height: 20px;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.3), transparent);
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.4), transparent);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9998;
             transition: transform 0.1s ease;
         }
         
-        /* 滚动指示器 */
         .scroll-indicator {
             position: fixed;
             right: 30px;
@@ -299,7 +177,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(102, 126, 234, 0.3);
+            background: rgba(0, 212, 255, 0.3);
             margin: 15px 0;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -312,7 +190,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #00d4ff, #00a3ff);
             transform: scale(0);
             transition: transform 0.3s ease;
         }
@@ -325,182 +203,301 @@
             transform: scale(1.3);
         }
         
-        /* 文字悬停效果 */
         .text-hover {
             transition: color 0.3s ease;
         }
         
         .text-hover:hover {
-            color: #667eea;
+            color: #00d4ff;
         }
         
-        /* 玻璃态效果 */
+        h1, h2, h3, h4 {
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+        
+        h2:hover {
+            color: #00d4ff;
+        }
+        
         .glass-effect {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(10, 10, 20, 0.8);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: rgba(0, 212, 255, 0.15);
+            margin-bottom: 8px;
+        }
+        
+        .featured-label {
+            font-size: 12px;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #00d4ff, #00a3ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid #00d4ff;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00d4ff }
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.3);
+            pointer-events: none;
+            animation: float 15s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #00d4ff, #00a3ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+        
+        .glow-effect {
+            position: relative;
+        }
+        
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00d4ff, #00a3ff, #00d4ff);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            filter: blur(10px);
+        }
+        
+        .glow-effect:hover::before {
+            opacity: 1;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
     </style>
 </head>
-<body class="text-gray-800">
-    <!-- 动态背景 -->
+<body class="text-gray-200">
     <div class="animated-bg"></div>
     
-    <!-- 滚动进度条 -->
     <div class="scroll-progress" id="scrollProgress"></div>
     
-    <!-- 鼠标跟随效果 -->
     <div class="cursor-follower" id="cursorFollower"></div>
     
-    <!-- 滚动指示器 -->
     <div class="scroll-indicator">
-        <div class="scroll-dot" data-section="intro"></div>
-        <div class="scroll-dot" data-section="work"></div>
+        <div class="scroll-dot" data-section="home"></div>
         <div class="scroll-dot" data-section="projects"></div>
-        <div class="scroll-dot" data-section="honors"></div>
         <div class="scroll-dot" data-section="skills"></div>
+        <div class="scroll-dot" data-section="services"></div>
     </div>
     
-    <!-- 导航栏 -->
-    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50 glass-effect">
+    <header class="fixed top-0 left-0 right-0 z-50 glass-effect">
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
-                <!-- 网站标题 -->
-                <a href="index.html" class="text-xl font-bold">
+                <a href="index.html" class="text-2xl font-bold tracking-wider">
                     应宇
                 </a>
                 
-                <!-- 桌面端导航 -->
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#work" class="nav-link font-medium">工作经历</a>
-                    <a href="#projects" class="nav-link font-medium">项目经验</a>
-                    <a href="#honors" class="nav-link font-medium">荣誉成就</a>
-                    <a href="#skills" class="nav-link font-medium">技术栈</a>
-                    <a href="#about" class="nav-link font-medium">关于我</a>
+                    <a href="#home" class="nav-link font-medium">首页</a>
+                    <a href="#projects" class="nav-link font-medium">作品集</a>
+                    <a href="#skills" class="nav-link font-medium">技能树</a>
+                    <a href="#services" class="nav-link font-medium">我的服务</a>
                 </nav>
                 
-                <!-- 移动端汉堡菜单 -->
-                <button class="md:hidden text-gray-600 focus:outline-none" id="menu-toggle">
+                <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
                     <span class="fa fa-bars text-2xl"></span>
                 </button>
             </div>
             
-            <!-- 移动端导航菜单 -->
             <div class="md:hidden hidden mt-4 pb-3" id="mobile-menu">
                 <nav class="flex flex-col space-y-3">
-                    <a href="#work" class="font-medium px-2 py-1">工作经历</a>
-                    <a href="#projects" class="font-medium px-2 py-1">项目经验</a>
-                    <a href="#honors" class="font-medium px-2 py-1">荣誉成就</a>
-                    <a href="#skills" class="font-medium px-2 py-1">技术栈</a>
-                    <a href="#about" class="font-medium px-2 py-1">关于我</a>
+                    <a href="#home" class="font-medium px-2 py-1 text-white">首页</a>
+                    <a href="#projects" class="font-medium px-2 py-1 text-white">作品集</a>
+                    <a href="#skills" class="font-medium px-2 py-1 text-white">技能树</a>
+                    <a href="#services" class="font-medium px-2 py-1 text-white">我的服务</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- 工作经历 -->
-    <section id="work" class="section bg-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-12">工作经历</h2>
-                <p class="text-lg text-gray-600 mb-16">在实践中积累经验，在工作中成长进步</p>
-                
-                <!-- 工作经历列表 -->
-                <div class="space-y-16">
-                    <!-- 工作1 -->
-                    <div class="award-card bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up">
-                        <div class="flex flex-col md:flex-row md:items-start">
-                            <div class="md:w-1/4 mb-4 md:mb-0">
-                                <h3 class="text-xl font-bold mb-2">2025.07 - 2025.09</h3>
-                                <p class="text-gray-500 font-semibold">苏州驰越健康管理有限公司</p>
-                                <p class="text-purple-600 mt-2">用户端维护（实习）</p>
-                            </div>
-                            <div class="md:w-3/4 md:pl-8">
-                                <h4 class="text-lg font-bold mb-4">用户反馈处理与溯源</h4>
-                                <p class="text-gray-700 mb-6">
-                                    主动监控用户反馈渠道收集、分类并初步分析100+条用户反馈，精准溯源20+个产品功能或体验问题，为产品迭代提供数据支持。
-                                </p>
-                                <h4 class="text-lg font-bold mb-4">版本更新与测试支持</h4>
-                                <p class="text-gray-700 mb-6">
-                                    参与2次App版本更新前的UAT（用户验收测试）流程，执行测试用例，提交15+个有效Bug。
-                                </p>
-                                <div class="flex flex-wrap">
-                                    <span class="award-tag">用户反馈</span>
-                                    <span class="award-tag">问题溯源</span>
-                                    <span class="award-tag">UAT测试</span>
-                                    <span class="award-tag">Bug追踪</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 工作2 -->
-                    <div class="award-card bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up" data-aos-delay="100">
-                        <div class="flex flex-col md:flex-row md:items-start">
-                            <div class="md:w-1/4 mb-4 md:mb-0">
-                                <h3 class="text-xl font-bold mb-2">2024.05 - 2024.07</h3>
-                                <p class="text-gray-500 font-semibold">苏州元澄科技有限公司</p>
-                                <p class="text-purple-600 mt-2">运维工程师（实习）</p>
-                            </div>
-                            <div class="md:w-3/4 md:pl-8">
-                                <h4 class="text-lg font-bold mb-4">系统监控与日常巡检</h4>
-                                <p class="text-gray-700 mb-6">
-                                    负责对公司内部业务服务器进行日常监控与健康检查，累计提交30+份巡检报告，协助工程师提前发现潜在风险，保障系统稳定运行。
-                                </p>
-                                <h4 class="text-lg font-bold mb-4">文档维护与知识沉淀</h4>
-                                <p class="text-gray-700 mb-6">
-                                    参与运维知识库的建立与更新，将常见问题解决方案标准化，整理并撰写了10余份技术文档，降低了团队重复性咨询的时间成本。
-                                </p>
-                                <div class="flex flex-wrap">
-                                    <span class="award-tag">系统监控</span>
-                                    <span class="award-tag">日常巡检</span>
-                                    <span class="award-tag">知识库</span>
-                                    <span class="award-tag">文档维护</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <section id="home" class="hero-section">
+        <div id="particles-container"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">你好，我是应宇</h1>
+            <p class="text-2xl text-gray-300 mb-8">
+                <span class="typewriter">全栈开发者 | AI应用工程师</span>
+            </p>
+            <p class="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+                专注于构建高性能、可扩展的Web应用，将创新技术与实际需求完美结合
+            </p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="#projects" class="glow-effect px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full text-white font-semibold hover:shadow-lg transition-all duration-300">
+                    查看作品
+                </a>
+                <a href="#services" class="px-8 py-4 border-2 border-blue-400 rounded-full text-blue-400 font-semibold hover:bg-blue-400 hover:text-white transition-all duration-300">
+                    我的服务
+                </a>
+            </div>
+            <div class="mt-16 grid grid-cols-3 gap-8 max-w-3xl mx-auto">
+                <div class="floating" style="animation-delay: 0s;">
+                    <div class="counter" data-target="2">0</div>
+                    <p class="text-gray-400">段实习经验</p>
+                </div>
+                <div class="floating" style="animation-delay: 0.5s;">
+                    <div class="counter" data-target="2">0</div>
+                    <p class="text-gray-400">个完成项目</p>
+                </div>
+                <div class="floating" style="animation-delay: 1s;">
+                    <div class="counter" data-target="2">0</div>
+                    <p class="text-gray-400">本软著证书</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 项目经验 -->
-    <section id="projects" class="section bg-gray-50">
+
+    <section id="projects" class="section">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-12">项目经验</h2>
-                <p class="text-lg text-gray-600 mb-16">这里汇集了我的代表性项目，涵盖全栈开发、AI应用与系统架构。</p>
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold mb-16 fade-in">作品集</h2>
+                <p class="text-xl text-gray-400 mb-16">这里汇集了我的代表性项目，涵盖全栈开发、AI应用与系统架构。</p>
                 
-                <div class="space-y-12">
-                    <!-- 项目1 -->
-                    <div class="project-card bg-gray-50 p-8 rounded-xl" data-aos="fade-up">
+                <div class="space-y-8">
+                    <div class="card p-8" data-aos="fade-up">
                         <div class="flex flex-col md:flex-row">
                             <div class="md:w-1/4 mb-6 md:mb-0">
-                                <div class="text-4xl font-bold text-gray-300 mb-4">01</div>
-                                <div class="text-sm font-medium text-gray-500 mb-4">Featured</div>
+                                <div class="project-number">01</div>
+                                <div class="featured-label">Featured</div>
                             </div>
                             <div class="md:w-3/4 md:pl-8">
-                                <h3 class="text-xl font-bold mb-4">智能AI在线考试管理系统 (Smart Exam V2.0)</h3>
-                                <p class="text-gray-700 mb-6">
+                                <h3 class="text-2xl font-bold mb-4 text-white">智能AI在线考试管理系统 (Smart Exam V2.0)</h3>
+                                <p class="text-gray-300 mb-6">
                                     利用 Django 5.0 + DRF 构建 RESTful API，通过 SimpleJWT 实现无状态身份认证与 RBAC（基于角色的访问控制）权限体系。前端基于 Vue 3 (Composition API) 配合 Pinia 进行状态管理，封装 Axios 拦截器处理全局 Token 校验与响应异常。
                                 </p>
                                 <div class="mb-4">
-                                    <h4 class="text-lg font-semibold mb-2 text-purple-600">AI智能化模块（核心亮点）</h4>
-                                    <p class="text-gray-700 mb-4">
+                                    <h4 class="text-lg font-semibold mb-2 text-blue-400">AI智能化模块（核心亮点）</h4>
+                                    <p class="text-gray-300 mb-4">
                                         AI自动命题，高可靠性与安全性设计。通过AI自动化阅卷功能，使主观题批改效率提升约70%，AI评分结果与人工评分高度吻合。
                                     </p>
                                 </div>
                                 <div class="mb-4">
-                                    <h4 class="text-lg font-semibold mb-2 text-purple-600">技术领先</h4>
-                                    <p class="text-gray-700 mb-4">
+                                    <h4 class="text-lg font-semibold mb-2 text-blue-400">技术领先</h4>
+                                    <p class="text-gray-300 mb-4">
                                         率先实践 Django 5.0 异步处理特性，系统在模拟100+并发考试场景下运行平稳，核心接口响应时间低于300ms。
                                     </p>
                                 </div>
                                 <div class="mb-4">
-                                    <h4 class="text-lg font-semibold mb-2 text-purple-600">鲁棒性</h4>
-                                    <p class="text-gray-700 mb-4">
+                                    <h4 class="text-lg font-semibold mb-2 text-blue-400">鲁棒性</h4>
+                                    <p class="text-gray-300 mb-4">
                                         完善的监控日志系统成功识别并拦截了多种模拟作弊手段，保障了考试过程的公平性。
                                     </p>
                                 </div>
@@ -518,16 +515,15 @@
                         </div>
                     </div>
                     
-                    <!-- 项目2 -->
-                    <div class="project-card bg-gray-50 p-8 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card p-8" data-aos="fade-up" data-aos-delay="100">
                         <div class="flex flex-col md:flex-row">
                             <div class="md:w-1/4 mb-6 md:mb-0">
-                                <div class="text-4xl font-bold text-gray-300 mb-4">02</div>
-                                <div class="text-sm font-medium text-gray-500 mb-4">Featured</div>
+                                <div class="project-number">02</div>
+                                <div class="featured-label">Featured</div>
                             </div>
                             <div class="md:w-3/4 md:pl-8">
-                                <h3 class="text-xl font-bold mb-4">智慧生活商城系统设计与实现</h3>
-                                <p class="text-gray-700 mb-6">
+                                <h3 class="text-2xl font-bold mb-4 text-white">智慧生活商城系统设计与实现</h3>
+                                <p class="text-gray-300 mb-6">
                                     本系统采用SSH架构，MySQL数据库，提供一个线上购物平台。在项目以及完成的基础之上，主要负责智慧商城项目功能的重新设计和编写。
                                 </p>
                                 <div class="flex flex-wrap">
@@ -541,58 +537,45 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 荣誉与成就 -->
-    <section id="honors" class="section bg-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-12">荣誉与成就</h2>
-                <p class="text-lg text-gray-600 mb-16">在学习和实践中获得的认可与成就</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- 荣誉1 -->
-                    <div class="service-card bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up">
-                        <h3 class="text-xl font-bold mb-4">优秀班干部</h3>
-                        <p class="text-gray-500 mb-4">2024 - 2025学年</p>
-                        <p class="text-gray-700">
-                            主动承担班级事务，策划并执行5+次主题团日与志愿活动，带动90%同学参与。
-                        </p>
-                    </div>
                     
-                    <!-- 荣誉2 -->
-                    <div class="service-card bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-xl font-bold mb-4">"房屋普查"社会实践先进个人</h3>
-                        <p class="text-gray-500 mb-4">2022年6月</p>
-                        <p class="text-gray-700">
-                            作为返乡大学生志愿者，连续15天完成3个自然村、420户房屋信息采集与录入，数据一次性验收合格率100%，获街道团委书面表扬。
-                        </p>
-                    </div>
-                    
-                    <!-- 荣誉3 -->
-                    <div class="service-card bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up" data-aos-delay="200">
-                        <h3 class="text-xl font-bold mb-4">班级"金牌组织者"称号</h3>
-                        <p class="text-gray-500 mb-4">2024 - 2025</p>
-                        <p class="text-gray-700">
-                            由辅导员及全班同学匿名投票产生，综合活动策划、任务催办、同学满意度三项第一，被同学私下誉为"最靠谱的组织委员"。
-                        </p>
-                    </div>
-                    
-                    <!-- 软著 -->
-                    <div class="service-card bg-white p-8 rounded-xl shadow-sm border-2 border-purple-500" data-aos="fade-up" data-aos-delay="300">
-                        <h3 class="text-xl font-bold mb-4 text-purple-600">软件著作权</h3>
-                        <p class="text-gray-500 mb-4">独立完成两项软件著作权</p>
-                        <div class="space-y-3">
-                            <div class="border-l-2 border-purple-500 pl-4">
-                                <p class="font-semibold text-gray-800">图书馆智能临时公位预订系统 V1.0</p>
-                                <p class="text-sm text-gray-500">登记号：2025SR1103188</p>
+                    <div class="card p-8" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/4 mb-6 md:mb-0">
+                                <div class="project-number">03</div>
+                                <div class="featured-label">Featured</div>
                             </div>
-                            <div class="border-l-2 border-purple-500 pl-4">
-                                <p class="font-semibold text-gray-800">智能健身追踪系统 V1.0</p>
-                                <p class="text-sm text-gray-500">登记号：2025SR1100649</p>
+                            <div class="md:w-3/4 md:pl-8">
+                                <h3 class="text-2xl font-bold mb-4 text-white">图书馆智能临时公位预订系统 V1.0</h3>
+                                <p class="text-gray-300 mb-6">
+                                    基于Web的图书馆座位预订系统，支持实时查看座位状态、在线预订、签到签退等功能。系统采用前后端分离架构，提供良好的用户体验。
+                                </p>
+                                <div class="flex flex-wrap">
+                                    <span class="skill-badge">Vue.js</span>
+                                    <span class="skill-badge">Spring Boot</span>
+                                    <span class="skill-badge">MySQL</span>
+                                    <span class="skill-badge">Redis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-8" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/4 mb-6 md:mb-0">
+                                <div class="project-number">04</div>
+                                <div class="featured-label">Featured</div>
+                            </div>
+                            <div class="md:w-3/4 md:pl-8">
+                                <h3 class="text-2xl font-bold mb-4 text-white">智能健身追踪系统 V1.0</h3>
+                                <p class="text-gray-300 mb-6">
+                                    集成运动数据记录、健身计划制定、健康数据分析等功能的智能健身管理系统。支持多种运动类型的数据追踪和可视化展示。
+                                </p>
+                                <div class="flex flex-wrap">
+                                    <span class="skill-badge">Vue 3</span>
+                                    <span class="skill-badge">Django</span>
+                                    <span class="skill-badge">ECharts</span>
+                                    <span class="skill-badge">MySQL</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -601,17 +584,15 @@
         </div>
     </section>
 
-    <!-- 技术栈 -->
-    <section id="skills" class="section bg-gray-50">
+    <section id="skills" class="section">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-12">技术栈</h2>
-                <p class="text-lg text-gray-600 mb-16">根据项目经验总结的核心技术能力</p>
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold mb-16 fade-in">技能树</h2>
+                <p class="text-xl text-gray-400 mb-16">根据项目经验总结的核心技术能力</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- 前端技术 -->
-                    <div class="service-card bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up">
-                        <h3 class="text-xl font-bold mb-6 text-purple-600">前端技术</h3>
+                    <div class="card p-8" data-aos="fade-up">
+                        <h3 class="text-xl font-bold mb-6 text-blue-400">前端技术</h3>
                         <div class="flex flex-wrap">
                             <span class="skill-badge">Vue.js</span>
                             <span class="skill-badge">Vue 3.4</span>
@@ -623,9 +604,8 @@
                         </div>
                     </div>
                     
-                    <!-- 后端技术 -->
-                    <div class="service-card bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-xl font-bold mb-6 text-purple-600">后端技术</h3>
+                    <div class="card p-8" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-xl font-bold mb-6 text-blue-400">后端技术</h3>
                         <div class="flex flex-wrap">
                             <span class="skill-badge">Python</span>
                             <span class="skill-badge">Django 5.0</span>
@@ -639,9 +619,8 @@
                         </div>
                     </div>
                     
-                    <!-- 数据库 -->
-                    <div class="service-card bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up" data-aos-delay="200">
-                        <h3 class="text-xl font-bold mb-6 text-purple-600">数据库</h3>
+                    <div class="card p-8" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-xl font-bold mb-6 text-blue-400">数据库</h3>
                         <div class="flex flex-wrap">
                             <span class="skill-badge">MySQL 5.7</span>
                             <span class="skill-badge">MySQL 8.4</span>
@@ -649,9 +628,8 @@
                         </div>
                     </div>
                     
-                    <!-- 其他技术 -->
-                    <div class="service-card bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up" data-aos-delay="300">
-                        <h3 class="text-xl font-bold mb-6 text-purple-600">其他技术</h3>
+                    <div class="card p-8" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-xl font-bold mb-6 text-blue-400">其他技术</h3>
                         <div class="flex flex-wrap">
                             <span class="skill-badge">阿里云通义千问API</span>
                             <span class="skill-badge">RESTful API</span>
@@ -666,56 +644,115 @@
         </div>
     </section>
 
-    <!-- 关于我 -->
-    <section id="about" class="section bg-white">
+    <section id="services" class="section">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto fade-in">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 gradient-text">应宇</h1>
-                <h2 class="text-2xl md:text-3xl text-gray-600 mb-8">勤奋务实的全栈开发者</h2>
-                <p class="text-lg text-gray-700 mb-8 text-hover leading-relaxed">
-                    在职业发展中，我始终秉持勤奋务实的工作态度。我相信高效执行是基础，因此我会优先专注于手头任务的落实，注重细节并追求高质量的交付。例如，在项目中，我主动承担了前期资料整理与分析的基础工作，通过系统化的梳理，为项目决策提供了清晰的数据支持，确保了项目的顺利启动。
-                </p>
-                <p class="text-lg text-gray-700 mb-8 text-hover leading-relaxed">
-                    我非常重视工作的透明度和团队协作。我会定期、主动地进行工作汇报，不仅说明进展，也会坦诚沟通遇到的挑战与所需支持，确保信息同步，推动问题高效解决。同时，我以积极开放的心态面对新任务和新领域，将每一次新的指派都视为宝贵的学习和成长机会。
-                </p>
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold mb-16 fade-in">我的服务</h2>
+                <p class="text-xl text-gray-400 mb-16">为您提供专业的技术解决方案</p>
                 
-                <!-- 教育背景 -->
-                <div class="mt-12 p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl border-l-4 border-purple-500">
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">教育背景</h3>
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <p class="text-lg font-semibold text-gray-800">南通理工学院</p>
-                            <p class="text-gray-600">软件工程 · 本科</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card" data-aos="fade-up">
+                        <div class="service-icon">
+                            <i class="fa fa-code"></i>
                         </div>
-                        <div class="mt-2 md:mt-0 text-right">
-                            <p class="text-purple-600 font-semibold">2022 - 2026</p>
-                            <p class="text-sm text-gray-500">GPA: 2.98 · 专业排名前 15%</p>
-                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-white">全栈开发</h3>
+                        <p class="text-gray-300">
+                            提供从前端到后端的完整开发服务，包括Web应用、API接口、数据库设计等
+                        </p>
                     </div>
-                </div>
-                
-                <!-- 装饰性元素 -->
-                <div class="flex items-center gap-6 mt-12">
-                    <div class="w-16 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></div>
-                    <span class="text-gray-400 text-sm">CONTACT ME</span>
-                    <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                    
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-icon">
+                            <i class="fa fa-rocket"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-white">AI应用集成</h3>
+                        <p class="text-gray-300">
+                            集成AI大模型API，实现智能问答、内容生成、数据分析等AI功能
+                        </p>
+                    </div>
+                    
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-icon">
+                            <i class="fa fa-mobile"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-white">响应式设计</h3>
+                        <p class="text-gray-300">
+                            打造适配各种设备的精美界面，确保在手机、平板、电脑上都有良好体验
+                        </p>
+                    </div>
+                    
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-icon">
+                            <i class="fa fa-database"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-white">数据库优化</h3>
+                        <p class="text-gray-300">
+                            数据库设计与优化，提升查询性能，确保数据安全与完整性
+                        </p>
+                    </div>
+                    
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="service-icon">
+                            <i class="fa fa-cogs"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-white">系统运维</h3>
+                        <p class="text-gray-300">
+                            服务器部署、监控、维护，保障系统稳定运行，快速响应问题
+                        </p>
+                    </div>
+                    
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="service-icon">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-white">技术咨询</h3>
+                        <p class="text-gray-300">
+                            提供专业的技术方案建议，帮助您做出最佳的技术选型决策
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
-    <footer class="py-12 bg-white border-t border-gray-200">
+    <section id="about" class="section">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <p class="text-gray-500">© 2026 应宇. 保留所有权利.</p>
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold mb-12 fade-in">关于我</h2>
+                <p class="text-xl text-gray-400 mb-8">勤奋务实的全栈开发者</p>
+                <p class="text-lg text-gray-300 mb-8 text-hover">
+                    在职业发展中，我始终秉持勤奋务实的工作态度。我相信高效执行是基础，因此我会优先专注于手头任务的落实，注重细节并追求高质量的交付。例如，在项目中，我主动承担了前期资料整理与分析的基础工作，通过系统化的梳理，为项目决策提供了清晰的数据支持，确保了项目的顺利启动。
+                </p>
+                <p class="text-lg text-gray-300 mb-8 text-hover">
+                    我非常重视工作的透明度和团队协作。我会定期、主动地进行工作汇报，不仅说明进展，也会坦诚沟通遇到的挑战与所需支持，确保信息同步，推动问题高效解决。同时，我以积极开放的心态面对新任务和新领域，将每一次新的指派都视为宝贵的学习和成长机会。
+                </p>
+                
+                <div class="card p-8 mt-12">
+                    <h3 class="text-xl font-bold mb-6 text-blue-400">教育背景</h3>
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div>
+                            <p class="text-lg font-semibold text-white">南通理工学院</p>
+                            <p class="text-gray-400">软件工程 · 本科</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-blue-400 font-semibold">2022 - 2026</p>
+                            <p class="text-gray-400">GPA: 2.98 · 专业排名前 15%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto text-center">
+                <p class="text-gray-400">© 2026 应宇. 保留所有权利.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // 初始化AOS动画库
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({
                 duration: 800,
@@ -723,7 +760,6 @@
                 once: true
             });
             
-            // 滚动进度条
             const scrollProgress = document.getElementById('scrollProgress');
             window.addEventListener('scroll', () => {
                 const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -732,7 +768,6 @@
                 scrollProgress.style.width = progress + '%';
             });
             
-            // 滚动指示器
             const scrollDots = document.querySelectorAll('.scroll-dot');
             const sections = document.querySelectorAll('section');
             
@@ -754,7 +789,6 @@
                 });
             });
             
-            // 滚动指示器点击事件
             scrollDots.forEach(dot => {
                 dot.addEventListener('click', () => {
                     const sectionId = dot.getAttribute('data-section');
@@ -768,7 +802,6 @@
                 });
             });
             
-            // 鼠标跟随效果
             const cursorFollower = document.getElementById('cursorFollower');
             let mouseX = 0, mouseY = 0;
             let cursorX = 0, cursorY = 0;
@@ -792,7 +825,6 @@
             
             animateCursor();
             
-            // 移动端菜单切换
             const menuToggle = document.getElementById('menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
             
@@ -800,7 +832,6 @@
                 mobileMenu.classList.toggle('hidden');
             });
             
-            // 平滑滚动
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -813,13 +844,81 @@
                             behavior: 'smooth'
                         });
                         
-                        // 关闭移动端菜单
                         if (!mobileMenu.classList.contains('hidden')) {
                             mobileMenu.classList.add('hidden');
                         }
                     }
                 });
             });
+            
+            function createParticles() {
+                const container = document.getElementById('particles-container');
+                const particleCount = 50;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    
+                    const size = Math.random() * 5 + 2;
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 15 + 's';
+                    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                    
+                    container.appendChild(particle);
+                }
+            }
+            
+            createParticles();
+            
+            function animateCounters() {
+                const counters = document.querySelectorAll('.counter');
+                
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+                    
+                    const updateCounter = () => {
+                        current += step;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                updateCounter();
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.5 });
+                    
+                    observer.observe(counter);
+                });
+            }
+            
+            animateCounters();
+            
+            function addParallaxEffect() {
+                const heroContent = document.querySelector('.hero-content');
+                
+                window.addEventListener('mousemove', (e) => {
+                    const x = (window.innerWidth - e.pageX * 2) / 100;
+                    const y = (window.innerHeight - e.pageY * 2) / 100;
+                    
+                    heroContent.style.transform = `translateX(${x}px) translateY(${y}px)`;
+                });
+            }
+            
+            addParallaxEffect();
         });
     </script>
 </body>
