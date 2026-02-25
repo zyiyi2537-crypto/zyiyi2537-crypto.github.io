@@ -383,6 +383,26 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
+        
+        .stat-link {
+            display: block;
+            transition: all 0.3s ease;
+            padding: 1rem;
+            border-radius: 16px;
+        }
+        
+        .stat-link:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .stat-link:hover .counter {
+            color: #00d4ff;
+        }
+        
+        .stat-link:hover p {
+            color: #ffffff;
+        }
     </style>
 </head>
 <body class="text-gray-200">
@@ -448,18 +468,18 @@
                 </a>
             </div>
             <div class="mt-16 grid grid-cols-3 gap-8 max-w-3xl mx-auto">
-                <div class="floating" style="animation-delay: 0s;">
+                <a href="#about" class="stat-link floating" style="animation-delay: 0s; text-decoration: none;">
                     <div class="counter" data-target="2">0</div>
                     <p class="text-gray-400">段实习经验</p>
-                </div>
-                <div class="floating" style="animation-delay: 0.5s;">
+                </a>
+                <a href="#projects" class="stat-link floating" style="animation-delay: 0.5s; text-decoration: none;">
                     <div class="counter" data-target="2">0</div>
                     <p class="text-gray-400">个完成项目</p>
-                </div>
-                <div class="floating" style="animation-delay: 1s;">
+                </a>
+                <a href="#projects" class="stat-link floating" style="animation-delay: 1s; text-decoration: none;">
                     <div class="counter" data-target="2">0</div>
                     <p class="text-gray-400">本软著证书</p>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -726,6 +746,41 @@
                 <p class="text-lg text-gray-300 mb-8 text-hover">
                     我非常重视工作的透明度和团队协作。我会定期、主动地进行工作汇报，不仅说明进展，也会坦诚沟通遇到的挑战与所需支持，确保信息同步，推动问题高效解决。同时，我以积极开放的心态面对新任务和新领域，将每一次新的指派都视为宝贵的学习和成长机会。
                 </p>
+                
+                <div class="card p-8 mt-12">
+                    <h3 class="text-xl font-bold mb-6 text-blue-400">实习经历</h3>
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-blue-400 pl-4">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
+                                <div>
+                                    <p class="text-lg font-semibold text-white">苏州驰越健康管理有限公司</p>
+                                    <p class="text-gray-400">用户端维护（实习）</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-blue-400 font-semibold">2025.07 - 2025.09</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                主动监控用户反馈渠道收集、分类并初步分析100+条用户反馈，精准溯源20+个产品功能或体验问题，为产品迭代提供数据支持。参与2次App版本更新前的UAT（用户验收测试）流程，执行测试用例，提交15+个有效Bug。
+                            </p>
+                        </div>
+                        
+                        <div class="border-l-2 border-blue-400 pl-4">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
+                                <div>
+                                    <p class="text-lg font-semibold text-white">苏州元澄科技有限公司</p>
+                                    <p class="text-gray-400">运维工程师（实习）</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-blue-400 font-semibold">2024.05 - 2024.07</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                负责对公司内部业务服务器进行日常监控与健康检查，累计提交30+份巡检报告，协助工程师提前发现潜在风险，保障系统稳定运行。参与运维知识库的建立与更新，将常见问题解决方案标准化，整理并撰写了10余份技术文档，降低了团队重复性咨询的时间成本。
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="card p-8 mt-12">
                     <h3 class="text-xl font-bold mb-6 text-blue-400">教育背景</h3>
