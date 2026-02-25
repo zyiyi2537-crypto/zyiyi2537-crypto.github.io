@@ -459,6 +459,7 @@
     <div class="scroll-indicator">
         <div class="scroll-dot" data-section="home"></div>
         <div class="scroll-dot" data-section="projects"></div>
+        <div class="scroll-dot" data-section="copyrights"></div>
         <div class="scroll-dot" data-section="skills"></div>
         <div class="scroll-dot" data-section="services"></div>
     </div>
@@ -467,12 +468,13 @@
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <a href="index.html" class="text-2xl font-bold tracking-wider">
-                    应宇
+                    个人主页
                 </a>
                 
                 <nav class="hidden md:flex space-x-8">
                     <a href="#home" class="nav-link font-medium">首页</a>
                     <a href="#projects" class="nav-link font-medium">作品集</a>
+                    <a href="#copyrights" class="nav-link font-medium">软件著作权</a>
                     <a href="#skills" class="nav-link font-medium">技能树</a>
                     <a href="#services" class="nav-link font-medium">我的服务</a>
                 </nav>
@@ -486,6 +488,7 @@
                 <nav class="flex flex-col space-y-3">
                     <a href="#home" class="font-medium px-2 py-1 text-white">首页</a>
                     <a href="#projects" class="font-medium px-2 py-1 text-white">作品集</a>
+                    <a href="#copyrights" class="font-medium px-2 py-1 text-white">软件著作权</a>
                     <a href="#skills" class="font-medium px-2 py-1 text-white">技能树</a>
                     <a href="#services" class="font-medium px-2 py-1 text-white">我的服务</a>
                 </nav>
@@ -587,48 +590,63 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="card p-8" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex flex-col md:flex-row">
-                            <div class="md:w-1/4 mb-6 md:mb-0">
-                                <div class="project-number">03</div>
-                                <div class="featured-label">Featured</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="copyrights" class="section">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold mb-16 fade-in">软件著作权</h2>
+                <p class="text-xl text-gray-400 mb-16">独立完成两项软件著作权</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card p-8 border-2 border-blue-400" data-aos="fade-up">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold mb-4 text-blue-400">图书馆智能临时公位预订系统 V1.0</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between border-b border-gray-700 pb-2">
+                                <span class="text-gray-400">权利取得方式</span>
+                                <span class="text-white font-semibold">原始取得</span>
                             </div>
-                            <div class="md:w-3/4 md:pl-8">
-                                <h3 class="text-2xl font-bold mb-4 text-white">图书馆智能临时公位预订系统 V1.0</h3>
-                                <p class="text-gray-300 mb-6">
-                                    基于Web的图书馆座位预订系统，支持实时查看座位状态、在线预订、签到签退等功能。系统采用前后端分离架构，提供良好的用户体验。
-                                </p>
-                                <div class="flex flex-wrap">
-                                    <span class="skill-badge">Vue.js</span>
-                                    <span class="skill-badge">Spring Boot</span>
-                                    <span class="skill-badge">MySQL</span>
-                                    <span class="skill-badge">Redis</span>
-                                </div>
+                            <div class="flex justify-between border-b border-gray-700 pb-2">
+                                <span class="text-gray-400">权利范围</span>
+                                <span class="text-white font-semibold">全部权利</span>
+                            </div>
+                            <div class="flex justify-between border-b border-gray-700 pb-2">
+                                <span class="text-gray-400">登记号</span>
+                                <span class="text-blue-400 font-semibold">2025SR1103188</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="card p-8" data-aos="fade-up" data-aos-delay="300">
-                        <div class="flex flex-col md:flex-row">
-                            <div class="md:w-1/4 mb-6 md:mb-0">
-                                <div class="project-number">04</div>
-                                <div class="featured-label">Featured</div>
+                    <div class="card p-8 border-2 border-blue-400" data-aos="fade-up" data-aos-delay="100">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold mb-4 text-blue-400">智能健身追踪系统 V1.0</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between border-b border-gray-700 pb-2">
+                                <span class="text-gray-400">权利取得方式</span>
+                                <span class="text-white font-semibold">原始取得</span>
                             </div>
-                            <div class="md:w-3/4 md:pl-8">
-                                <h3 class="text-2xl font-bold mb-4 text-white">智能健身追踪系统 V1.0</h3>
-                                <p class="text-gray-300 mb-6">
-                                    集成运动数据记录、健身计划制定、健康数据分析等功能的智能健身管理系统。支持多种运动类型的数据追踪和可视化展示。
-                                </p>
-                                <div class="flex flex-wrap">
-                                    <span class="skill-badge">Vue 3</span>
-                                    <span class="skill-badge">Django</span>
-                                    <span class="skill-badge">ECharts</span>
-                                    <span class="skill-badge">MySQL</span>
-                                </div>
+                            <div class="flex justify-between border-b border-gray-700 pb-2">
+                                <span class="text-gray-400">权利范围</span>
+                                <span class="text-white font-semibold">全部权利</span>
+                            </div>
+                            <div class="flex justify-between border-b border-gray-700 pb-2">
+                                <span class="text-gray-400">登记号</span>
+                                <span class="text-blue-400 font-semibold">2025SR1100649</span>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="mt-12 p-6 bg-blue-900 bg-opacity-30 rounded-lg border border-blue-400">
+                    <p class="text-gray-300 text-sm text-center">
+                        根据《计算机软件保护条例》和《计算机软件著作权登记办法》的规定，经中国版权保护中心审核，对以上事项予以登记。
+                    </p>
                 </div>
             </div>
         </div>
