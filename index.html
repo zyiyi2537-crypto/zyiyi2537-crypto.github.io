@@ -383,26 +383,6 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
-        
-        .stat-link {
-            display: block;
-            transition: all 0.3s ease;
-            padding: 1rem;
-            border-radius: 16px;
-        }
-        
-        .stat-link:hover {
-            background: rgba(0, 212, 255, 0.1);
-            transform: scale(1.05);
-        }
-        
-        .stat-link:hover .counter {
-            color: #00d4ff;
-        }
-        
-        .stat-link:hover p {
-            color: #ffffff;
-        }
     </style>
 </head>
 <body class="text-gray-200">
@@ -465,20 +445,6 @@
                 </a>
                 <a href="#services" class="px-8 py-4 border-2 border-blue-400 rounded-full text-blue-400 font-semibold hover:bg-blue-400 hover:text-white transition-all duration-300">
                     我的服务
-                </a>
-            </div>
-            <div class="mt-16 grid grid-cols-3 gap-8 max-w-3xl mx-auto">
-                <a href="#about" class="stat-link floating" style="animation-delay: 0s; text-decoration: none;">
-                    <div class="counter" data-target="2">0</div>
-                    <p class="text-gray-400">段实习经验</p>
-                </a>
-                <a href="#projects" class="stat-link floating" style="animation-delay: 0.5s; text-decoration: none;">
-                    <div class="counter" data-target="2">0</div>
-                    <p class="text-gray-400">个完成项目</p>
-                </a>
-                <a href="#projects" class="stat-link floating" style="animation-delay: 1s; text-decoration: none;">
-                    <div class="counter" data-target="2">0</div>
-                    <p class="text-gray-400">本软著证书</p>
                 </a>
             </div>
         </div>
@@ -927,40 +893,6 @@
             }
             
             createParticles();
-            
-            function animateCounters() {
-                const counters = document.querySelectorAll('.counter');
-                
-                counters.forEach(counter => {
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    const duration = 2000;
-                    const step = target / (duration / 16);
-                    let current = 0;
-                    
-                    const updateCounter = () => {
-                        current += step;
-                        if (current < target) {
-                            counter.textContent = Math.floor(current);
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            counter.textContent = target;
-                        }
-                    };
-                    
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                updateCounter();
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    }, { threshold: 0.5 });
-                    
-                    observer.observe(counter);
-                });
-            }
-            
-            animateCounters();
             
             function addParallaxEffect() {
                 const heroContent = document.querySelector('.hero-content');
